@@ -9,8 +9,9 @@ class DB {
     public function connect() {
         try {
             $pdo = new PDO("mysql:host=$this->host;dbname=$this->db", $this->user, $this->password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            echo "Connect!";
+            return $pdo;
         } catch (PDOException $e) {
             echo "ERROR: " . $e->getMessage();
         }
