@@ -2,9 +2,12 @@
     include_once "includes/header.php";
 
     $product_categories = new ProductCategory();
-    $data = $product_categories->getAll();
+    $data = $product_categories->getCategories();
 ?>
+
 <h1>Product Categories</h1>
+<a href="add_product_categories.php">Add</a>
+
 <table>
     <thead>
         <tr>
@@ -22,7 +25,7 @@
                 <td><?= $i; $i++;?></td>
                 <td><?= $item->name; ?></td>
                 <td>
-                    <a href="#">Edit</a>
+                    <a href="edit_product_categories.php?slug=<?= $item->slug; ?>">Edit</a>
                     <a href="#">Delete</a>
                 </td>
             </tr>
