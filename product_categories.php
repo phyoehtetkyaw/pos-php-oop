@@ -26,7 +26,7 @@
                 <td><?= $item->name; ?></td>
                 <td>
                     <a href="edit_product_categories.php?slug=<?= $item->slug; ?>">Edit</a>
-                    <a href="#">Delete</a>
+                    <a href="delete_product_categories.php?slug=<?= $item->slug ?>">Delete</a>
                 </td>
             </tr>
         <?php

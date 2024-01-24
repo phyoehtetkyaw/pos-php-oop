@@ -54,7 +54,8 @@ class ProductCategory {
                 return false;
             endif;
         } catch (PDOException $e) {
-            die("Product Categories: add categories error!<br>" . $e->getMessage());
+            return false;
+            // die("Product Categories: add categories error!<br>" . $e->getMessage());
         }
     }
 
@@ -104,7 +105,57 @@ class ProductCategory {
 
             return $res;
         } catch (PDOException $e) {
-            die("Product Cateogries: get category by slug error!<br>" . $e->getMessage());
+            return false;
+            // die("Product Cateogries: get category by slug error!<br>" . $e->getMessage());
+        }
+    }
+
+    public function editCategories(array $request, string $slug) : bool {
+        try {
+            if (isset($request["submit"])):
+                
+                $validation_result = $this->validate($request);
+
+                if(count($validation_result) > 0):
+                    $this->setValidationMessage($validation_result);
+                    return false;
+                else:
+                    $name = htmlspecialchars($request["name"]);
+                    $new_slug = App::slugify($name);
+                    $updated_at = date("Y-m-d H:i:s", time());
+                    
+                    $sql = "UPDATE `tbl_product_categories` SET `name`=:name, `slug`=:new_slug, `updated_at`=:updated_at WHERE `slug`=:slug";
+                    $stmt = $this->con->prepare($sql);
+                    $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+                    $stmt->bindParam(":new_slug", $new_slug, PDO::PARAM_STR);
+                    $stmt->bindParam(":updated_at", $updated_at, PDO::PARAM_STR);
+                    $stmt->bindParam(":slug", $slug, PDO::PARAM_STR);
+                    $stmt->execute();
+
+                    return true;
+                endif;
+            else:
+                return false;
+            endif;
+        } catch (PDOException $e) {
+            $_SESSION["edit_product_categories_error"] = $e->getMessage();
+            return false;
+        }
+    }
+
+    public function deleteCategories(string $slug) : bool {
+        try {
+            $deleted_at = date("Y-m-d H:i:s", time());
+            $sql = "UPDATE `tbl_product_categories` SET `deleted_at`=:deleted_at WHERE `slug`=:slug";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam("deleted_at", $deleted_at, PDO::PARAM_STR);
+            $stmt->bindParam("slug", $slug, PDO::PARAM_STR);
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            return false;
+            // die("Product Cateogries: delete category by slug error!<br>" . $e->getMessage());
         }
     }
 }
