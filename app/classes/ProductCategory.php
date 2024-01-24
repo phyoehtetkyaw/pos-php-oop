@@ -54,8 +54,8 @@ class ProductCategory {
                 return false;
             endif;
         } catch (PDOException $e) {
+            $_SESSION["add_product_categories_error"] = $e->getMessage();
             return false;
-            // die("Product Categories: add categories error!<br>" . $e->getMessage());
         }
     }
 
@@ -106,7 +106,6 @@ class ProductCategory {
             return $res;
         } catch (PDOException $e) {
             return false;
-            // die("Product Cateogries: get category by slug error!<br>" . $e->getMessage());
         }
     }
 
@@ -155,7 +154,6 @@ class ProductCategory {
             return true;
         } catch (PDOException $e) {
             return false;
-            // die("Product Cateogries: delete category by slug error!<br>" . $e->getMessage());
         }
     }
 }

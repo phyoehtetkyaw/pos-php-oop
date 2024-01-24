@@ -8,6 +8,12 @@
 ?>
 
 <h1>Add Category</h1>
+<?php
+    if (isset($_SESSION["add_product_categories_error"])):
+        echo "<span style='color: red;'>" . $_SESSION["add_product_categories_error"] . "</span><br>";
+        unset($_SESSION["add_product_categories_error"]);
+    endif;
+?>
 <form action="" method="post">
     <label for="name">Name: </label>
     <input type="text" name="name" placeholder="Enter Name" id="name"><br>
