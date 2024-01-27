@@ -28,10 +28,7 @@
                     <span class="nav-text">Product Categories</span>
                 </a>
             </li>
-        </ul>
-        <div class="help-desk">
-            <a href="javascript:void(0)" class="btn btn-primary">Help Desk</a>
-        </div>		
+        </ul>		
     </div>
 </div>		
 <!--**********************************

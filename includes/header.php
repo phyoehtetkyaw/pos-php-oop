@@ -34,6 +34,12 @@
 	
 	<!-- Style css -->
    <link href="static/css/style.css" rel="stylesheet">
+
+   <style>
+		.breadcrumb-item + .breadcrumb-item::before {
+			content: "/" !important;
+		}
+   </style>
 	
 </head>
 <body data-typography="poppins" data-theme-version="light" data-layout="vertical" data-nav-headerbg="black" data-headerbg="color_1">
