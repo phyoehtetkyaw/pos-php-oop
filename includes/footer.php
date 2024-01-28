@@ -61,6 +61,16 @@
 	<script src="static/js/deznav-init.js"></script>
 	<script src="static/js/demo.js"></script>
     <script src="static/js/styleSwitcher.js"></script>
+    <script src="static/vendor/summernote-0.8.18-dist/summernote.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#product-description').summernote({
+                placeholder: 'Enter Description',
+                height: 180
+            });
+        });
+    </script>
 	
 	
 	

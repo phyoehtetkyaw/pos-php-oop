@@ -15,7 +15,7 @@ class ProductCategory {
 
     public function getCategories() : iterable {
         try {
-            $sql = "SELECT `name`, `slug` FROM `tbl_product_categories` WHERE `deleted_at` IS NULL ORDER BY `id` DESC";
+            $sql = "SELECT `id`, `name`, `slug` FROM `tbl_product_categories` WHERE `deleted_at` IS NULL ORDER BY `id` DESC";
             $stmt = $this->con->prepare($sql);
             $stmt->execute();
             $res = $stmt->fetchAll(PDO::FETCH_OBJ);

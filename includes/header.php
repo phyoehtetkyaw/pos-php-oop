@@ -28,6 +28,7 @@
 	<link href="static/vendor/jvmap/jquery-jvectormap.css" rel="stylesheet">
 	<link href="static/cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css" rel="stylesheet">
 	<link href="static/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="static/vendor/summernote-0.8.18-dist/summernote.min.css">
 	
 	<!-- tagify-css -->
 	<link href="static/vendor/tagify/dist/tagify.css" rel="stylesheet">
