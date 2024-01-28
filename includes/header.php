@@ -39,6 +39,10 @@
 		.breadcrumb-item + .breadcrumb-item::before {
 			content: "/" !important;
 		}
+
+		.invalid-feedback {
+			display: block !important;
+		}
    </style>
 	
 </head>

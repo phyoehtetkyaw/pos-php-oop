@@ -28,7 +28,7 @@ class ProductCategory {
 
     public function addCategories(array $request) : bool {
         try {
-            if (isset($request["submit"])):
+            if (isset($request["submit-1"]) || isset($request["submit-2"])):
                 
                 $validation_result = $this->validate($request);
 
@@ -47,6 +47,8 @@ class ProductCategory {
                     $stmt->bindParam("slug", $slug, PDO::PARAM_STR);
                     $stmt->bindParam("created_at", $created_at, PDO::PARAM_STR);
                     $stmt->execute();
+                    
+                    $_SESSION["product_categories_name"] = $name;
 
                     return true;
                 endif;
